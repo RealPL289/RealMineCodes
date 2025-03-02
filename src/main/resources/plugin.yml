@@ -1,0 +1,18 @@
+name: RealmineCodes
+version: 1.0
+main: com.tech.realminecodes.Main
+api-version: 1.16
+
+commands:
+  code:
+    description: Активировать бонус-код.
+  rmcodes:
+    description: Управление плагином.
+
+permissions:
+  realminecodes.use:
+    description: Разрешение на использование команды /code.
+    default: true
+  realminecodes.admin:
+    description: Разрешение на использование команды /rmcodes.
+    default: op

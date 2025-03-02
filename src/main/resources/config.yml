@@ -1,0 +1,39 @@
+# Настройки базы данных MySQL
+database:
+  host: localhost
+  port: 3306
+  database: minecraft
+  username: root
+  password: password
+
+# Сообщения
+messages:
+  usage: "&#FFD700Использование: &#00FF00/code <код>"
+  code_not_found: "&#FF0000Код не найден."
+  code_already_used: "&#FF0000Вы уже активировали этот код."
+  ip_already_used: "&#FF0000Вы уже активировали этот код с этого IP"
+  code_limit_reached: "&#FF0000Лимит активаций этого кода исчерпан."
+  code_success: "&#00FF00Код успешно активирован!"
+  no_permission_use: "&#FF0000У вас нет прав на использование команды /code."
+  no_permission_reload: "&#FF0000У вас нет прав на перезагрузку конфигурации."
+  reload_success: "&#00FF00Конфигурация успешно перезагружена!"
+
+# Коды
+codes:
+  yt:
+    type: media
+    iplimit: true
+    mediatimeout: 86400
+    reward:
+      - "eco give %player% 5000"
+      - "give %player% diamond 8"
+  bonus:
+    type: bonus
+    reward:
+      - "eco give %player% 10000"
+    max_activations: 50
+  oot:
+    type: oot
+    iplimit: true
+    reward:
+      - "eco give %player% 10000"
