@@ -20,7 +20,7 @@ public class CodeCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (!player.hasPermission("realminecodes.use")) {
-            player.sendMessage(ColorUtils.translateHexColors(plugin.getConfig().getString("messages.no_permission_use")));
+            player.sendMessage(ColorUtils.translateHexColors(plugin.getConfig().getString("messages.no_permission")));
             return true;
         }
 

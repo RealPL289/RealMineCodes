@@ -34,7 +34,7 @@ public class Main extends JavaPlugin {
         if (command.getName().equalsIgnoreCase("rmcodes")) {
             if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
                 if (!sender.hasPermission("realminecodes.admin")) {
-                    sender.sendMessage(ColorUtils.translateHexColors(getConfig().getString("messages.no_permission_reload")));
+                    sender.sendMessage(ColorUtils.translateHexColors(getConfig().getString("messages.no_permission")));
                     return true;
                 }
 
@@ -42,6 +42,26 @@ public class Main extends JavaPlugin {
                 codeManager.reloadConfig();
 
                 sender.sendMessage(ColorUtils.translateHexColors(getConfig().getString("messages.reload_success")));
+                return true;
+            } else if (args.length == 2 && args[0].equalsIgnoreCase("cleanhistory")) {
+                if (!sender.hasPermission("realminecodes.admin")) {
+                    sender.sendMessage(ColorUtils.translateHexColors(getConfig().getString("messages.no_permission")));
+                    return true;
+                }
+
+                String code = args[1];
+                int deletedRows = database.cleanHistory(code);
+
+                if (deletedRows > 0) {
+                    String message = getConfig().getString("messages.cleanhistory_success")
+                            .replace("{count}", String.valueOf(deletedRows))
+                            .replace("{code}", code);
+                    sender.sendMessage(ColorUtils.translateHexColors(message));
+                } else {
+                    String message = getConfig().getString("messages.cleanhistory_no_records")
+                            .replace("{code}", code);
+                    sender.sendMessage(ColorUtils.translateHexColors(message));
+                }
                 return true;
             }
         }

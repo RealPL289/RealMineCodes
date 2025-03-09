@@ -1,5 +1,5 @@
-# Настройки базы данных MySQL
-database:
+db_type: sqlite #тип базы данных mysql/sqlite
+database: #для MySQL
   host: localhost
   port: 3306
   database: minecraft
@@ -14,26 +14,27 @@ messages:
   ip_already_used: "&#FF0000Вы уже активировали этот код с этого IP"
   code_limit_reached: "&#FF0000Лимит активаций этого кода исчерпан."
   code_success: "&#00FF00Код успешно активирован!"
-  no_permission_use: "&#FF0000У вас нет прав на использование команды /code."
-  no_permission_reload: "&#FF0000У вас нет прав на перезагрузку конфигурации."
+  no_permission: "&#FF0000У вас нет прав на использование команды /code."
   reload_success: "&#00FF00Конфигурация успешно перезагружена!"
+  cleanhistory_success: "&#00FF00Удалено {count} записей для кода {code}."
+  cleanhistory_no_records: "&#FF0000Записи для кода {code} не найдены."
 
 # Коды
 codes:
   yt:
-    type: media
-    iplimit: true
-    mediatimeout: 86400
-    reward:
-      - "eco give %player% 5000"
+    type: media #код раз в n-ое кол-во времени
+    iplimit: true #ограничение по айпи
+    mediatimeout: 86400 #задержка в секундах
+    reward: #награда
+      - "eco give %player% 5000" #команды от имени консоли
       - "give %player% diamond 8"
   bonus:
-    type: bonus
+    type: bonus #бонус код на n-ое кол-во активаций, один игрок может использовать несколько раз
     reward:
       - "eco give %player% 10000"
-    max_activations: 50
+    max_activations: 20 #кол-во активаций
   oot:
-    type: oot
+    type: oot #использовать только 1 раз
     iplimit: true
     reward:
       - "eco give %player% 10000"
